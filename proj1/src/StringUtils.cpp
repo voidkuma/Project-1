@@ -1,4 +1,6 @@
 #include "StringUtils.h"
+#include <cstring>
+#include <cctype>
 
 namespace StringUtils{
 
@@ -7,9 +9,20 @@ std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     return "";
 }
 
+// Returns the capitalized string as in python
 std::string Capitalize(const std::string &str) noexcept{
-    // Replace code here
-    return "";
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
+    std::string capital_result = str;  // capital_result will be the string with the first letter capitalized.
+
+    if (std::islower(capital_result[0])) { // Checks if the first letter is capitalized
+        capital_result[0] = std::toupper(capital_result[0]); // if so it makes it capital
+    }
+
+    return capital_result;
 }
 
 std::string Upper(const std::string &str) noexcept{
