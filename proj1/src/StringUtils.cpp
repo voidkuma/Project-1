@@ -9,7 +9,7 @@ std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     return "";
 }
 
-// Returns the capitalized string as in python
+// Assignment: Returns the capitalized string as in python
 std::string Capitalize(const std::string &str) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
@@ -19,15 +19,20 @@ std::string Capitalize(const std::string &str) noexcept{
     std::string capital_result = str;  // capital_result will be the string with the first letter capitalized.
 
     if (std::islower(capital_result[0])) { // Checks if the first letter is capitalized
-        capital_result[0] = std::toupper(capital_result[0]); // if so it makes it capital
+        capital_result[0] = std::toupper(capital_result[0]); // if so it makes the first letter capital
     }
 
     return capital_result;
 }
 
+// Assignment: Returns the upper- or lower-case strings as in python
 std::string Upper(const std::string &str) noexcept{
-    // Replace code here
-    return "";
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
+    return str;
 }
 
 std::string Lower(const std::string &str) noexcept{
