@@ -33,7 +33,7 @@ std::string Upper(const std::string &str) noexcept{
         return str; // if empty it returns the string back
     }
     
-    std::string result = str; // Create a copy to modify
+    std::string result = str; // Creates a copy to modify
 
     for (int i = 0; (i < result.size()); i++){ // Iterates through each character in the string
         result[i] = std::toupper(result[i]); // Makes each character upper case
@@ -42,17 +42,23 @@ std::string Upper(const std::string &str) noexcept{
 
 
     return result; // return the result
-
 }
 
 // Assignment: Returns the lower-case strings as in python
+// Status: worked on
 std::string Lower(const std::string &str) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
+    
+    std::string result = str; // Creates a copy to modify
 
-    return str;
+    for (int i = 0; (i < result.size()); i++){ // Iterates through each character in the string
+        result[i] = std::tolower(result[i]); // Makes each character lower case
+    }
+
+    return result; // return the result
 }
 
 std::string LStrip(const std::string &str) noexcept{
