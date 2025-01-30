@@ -1,12 +1,14 @@
 #include "StringUtils.h"
-#include <cstring>
+#include <cstring> 
 #include <cctype>
 
 namespace StringUtils{
 
+// Assignment = Returns a substring of the string str, allows for negative values as in
+// python end == 0 means to include end of string
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     // Replace code here
-    return "";
+    return str;
 }
 
 // Assignment: Returns the capitalized string as in python
@@ -38,8 +40,6 @@ std::string Upper(const std::string &str) noexcept{
     for (int i = 0; (i < result.size()); i++){ // Iterates through each character in the string
         result[i] = std::toupper(result[i]); // Makes each character upper case
     }
-
-
 
     return result; // return the result
 }
