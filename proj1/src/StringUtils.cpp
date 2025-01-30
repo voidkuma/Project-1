@@ -25,8 +25,28 @@ std::string Capitalize(const std::string &str) noexcept{
     return capital_result;
 }
 
-// Assignment: Returns the upper- or lower-case strings as in python
+// Assignment: Returns the upper-case strings as in python
+// Status: worked on
 std::string Upper(const std::string &str) noexcept{
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+    
+    std::string result = str; // Create a copy to modify
+
+    for (int i = 0; (i < result.size()); i++){ // Iterates through each character in the string
+        result[i] = std::toupper(result[i]); // Makes each character upper case
+    }
+
+
+
+    return result; // return the result
+
+}
+
+// Assignment: Returns the lower-case strings as in python
+std::string Lower(const std::string &str) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
@@ -35,43 +55,66 @@ std::string Upper(const std::string &str) noexcept{
     return str;
 }
 
-std::string Lower(const std::string &str) noexcept{
-    // Replace code here
-    return "";
-}
-
 std::string LStrip(const std::string &str) noexcept{
-    // Replace code here
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
 std::string RStrip(const std::string &str) noexcept{
-    // Replace code here
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
 std::string Strip(const std::string &str) noexcept{
-    // Replace code here
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
-    // Replace code here
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
 std::string LJust(const std::string &str, int width, char fill) noexcept{
-    // Replace code here
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
 std::string RJust(const std::string &str, int width, char fill) noexcept{
-    // Replace code here
+
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
-    // Replace code here
+    
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+
     return "";
 }
 
