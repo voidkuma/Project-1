@@ -116,8 +116,16 @@ std::string Strip(const std::string &str) noexcept{
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
+    size_t last = str.size(); // last = last character in string
+    while (last > 0 && std::isspace(static_cast<unsigned char>(str[last - 1]))) {
+        --last;
+    }
+    size_t first = 0; // first = the first actual character in the string, non-whitespace
+    while (first < str.size() && std::isspace(static_cast<unsigned char>(str[first]))) {
+        ++first; // Increments first by one very iteration, in order to find the first actual character
+    }
 
-    return str;
+    return str.substr(first, last - first);
 }
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
