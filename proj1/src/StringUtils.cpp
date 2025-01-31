@@ -76,7 +76,7 @@ std::string Lower(const std::string &str) noexcept{
     return result; // return the result
 }
 
-// Assignment: Returns the left/right/both stripped strings,
+// Assignment: Returns the left stripped strings,
 // (white space characters are removed from left, right or both).
 std::string LStrip(const std::string &str) noexcept{
 
@@ -84,9 +84,17 @@ std::string LStrip(const std::string &str) noexcept{
         return str; // if empty it returns the string back
     }
 
-    return str;
+    size_t first = 0; // first = the first actual character in the string, non-whitespace
+    while (first < str.size() && std::isspace(static_cast<unsigned char>(str[first]))) {
+        ++first; // Increments first by one very iteration, in order to find the first actual character
+    }
+
+    // Return the substring from the first non-whitespace character to the end
+    return str.substr(first);
 }
 
+// Assignment: Returns the right stripped strings,
+// (white space characters are removed from left, right or both).
 std::string RStrip(const std::string &str) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
@@ -96,6 +104,8 @@ std::string RStrip(const std::string &str) noexcept{
     return str;
 }
 
+// Assignment: Returns the both stripped strings,
+// (white space characters are removed from left, right or both).
 std::string Strip(const std::string &str) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
