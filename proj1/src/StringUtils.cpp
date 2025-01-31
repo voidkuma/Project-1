@@ -9,33 +9,29 @@ namespace StringUtils{
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     // Replace code here
 
-    ssize_t len = str.size();
+    ssize_t length = str.size(); // this is the length of the string
+    
+    if (start < 0){
+        start += length; // Adjusting if negative for C++
+    }
+    if (end < 0){
+        end += length; // Adjusting if negative for C++ 
+    } 
 
-    // Adjust negative indices
-    if (start < 0) start += len;
-    if (end < 0) end += len;
-
-    // Handle out-of-bounds values
-    if (start < 0) start = 0;
-    if (end == 0) end = len; // Python behavior for `end == 0`
-    if (end > len) end = len;
-    if (start >= end) return ""; // Empty string if start >= end
+    if (start < 0){
+        start = 0;  
+    } else if (start >= end){
+        return ""; 
+    } 
+    
+    if (end == 0){
+       end = length;  
+    } else if (end > length){
+        end = length;
+    }
+  
 
     return str.substr(start, end - start);
-    // std::string first = str;
-    // std::string second = str;
-    // std::string result = "";
-    
-    // //
-    // for (int i = 0; (i < start); i++){ 
-    // result += first[i]; 
-    // }
-    // //
-    // for (int i = 0; (i < end); i++){ 
-    // result += second[i]; 
-    // }
-
-    // return str;
 }
 
 // Assignment: Returns the capitalized string as in python
