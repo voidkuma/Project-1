@@ -8,8 +8,38 @@ namespace StringUtils{
 // python end == 0 means to include end of string
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     // Replace code here
-    return str;
+
+#include <string>
+
+std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept {
+    ssize_t len = str.size();
+
+    // Adjust negative indices
+    if (start < 0) start += len;
+    if (end < 0) end += len;
+
+    if (start < 0) start = 0;
+    if (end == 0) end = len; 
+    if (end > len) end = len;
+    if (start >= end) return ""; // Empty string if start >= end
+
+    return str.substr(start, end - start);
 }
+//     std::string first = str;
+//     std::string second = str;
+//     std::string result = "";
+    
+//     //
+//     for (int i = 0; (i < start); i++){ 
+//     result += first[i]; 
+//     }
+//     //
+//     for (int i = 0; (i < end); i++){ 
+//     result += second[i]; 
+//     }
+
+//     return str;
+// }
 
 // Assignment: Returns the capitalized string as in python
 std::string Capitalize(const std::string &str) noexcept{
@@ -18,13 +48,13 @@ std::string Capitalize(const std::string &str) noexcept{
         return str; // if empty it returns the string back
     }
 
-    std::string capital_result = str;  // capital_result will be the string with the first letter capitalized.
+    std::string reult = str;  // capital_result will be the string with the first letter capitalized.
 
-    if (std::islower(capital_result[0])) { // Checks if the first letter is capitalized
-        capital_result[0] = std::toupper(capital_result[0]); // if so it makes the first letter capital
+    if (std::islower(reult[0])) { // Checks if the first letter is capitalized
+        reult[0] = std::toupper(reult[0]); // if so it makes the first letter capital
     }
 
-    return capital_result;
+    return reult;
 }
 
 // Assignment: Returns the upper-case strings as in python
