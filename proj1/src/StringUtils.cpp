@@ -18,18 +18,10 @@ std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
         end += length; // Adjusting if negative for C++ 
     } 
 
-    if (start < 0){
-        start = 0;  
-    } else if (start >= end){
-        return ""; 
-    } 
-    
-    if (end == 0){
-       end = length;  
-    } else if (end > length){
-        end = length;
-    }
-  
+    if (start < 0) start = 0;
+    if (end == 0) end = length; 
+    if (end > length) end = length;
+    if (start >= end) return ""; 
 
     return str.substr(start, end - start);
 }
