@@ -76,13 +76,15 @@ std::string Lower(const std::string &str) noexcept{
     return result; // return the result
 }
 
+// Assignment: Returns the left/right/both stripped strings,
+// (white space characters are removed from left, right or both).
 std::string LStrip(const std::string &str) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
 std::string RStrip(const std::string &str) noexcept{
@@ -91,7 +93,7 @@ std::string RStrip(const std::string &str) noexcept{
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
 std::string Strip(const std::string &str) noexcept{
@@ -100,7 +102,7 @@ std::string Strip(const std::string &str) noexcept{
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
