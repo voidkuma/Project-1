@@ -100,8 +100,13 @@ std::string RStrip(const std::string &str) noexcept{
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
+    size_t last = str.size(); // last = last character in string
+    while (last > 0 && std::isspace(static_cast<unsigned char>(str[last - 1]))) {
+        --last;
+    }
 
-    return str;
+    // Return the substring from the beginning to the last non-whitespace character
+    return str.substr(0, last);
 }
 
 // Assignment: Returns the both stripped strings,
