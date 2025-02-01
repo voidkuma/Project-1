@@ -218,19 +218,23 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     int index = 0; // index = where in the string we'll be
 
     for (int i = 0; (i < str.size()); i++){ // Iterates through each character in the string
-
+    
         if (str[i] == '\t') { // if the index we're on is a tab...
             int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
             result.append(spaces, ' '); // Appends spaces_to_add number of spaces
             index += spaces; // Update column position
+        } else {
+            if (str[i] == '\n') { 
+                index = 0; // Reset column if newline is found
+            } else { 
+                index += 1; // Otherwise, increment column position
+            }
+            result += str[i]; // Append normal characters as they are
         }
-        if (str[i] == '\n') { 
-            index = 0; // Reset column if newline is found
-        } 
-        index += 1; // Otherwise, increment column position
-        result += str[i]; // Append normal characters as they are
     }
+
     return result;
+
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
