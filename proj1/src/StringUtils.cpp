@@ -211,7 +211,7 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
 // tabsize = the size of the tab??
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
 
-    if (str.empty()) { // Checking if the string is empty
+    if (str == "") { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
     std::string result = ""; // result = what will be modified and turned innnn
