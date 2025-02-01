@@ -215,10 +215,12 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     }
     std::string result = ""; // result = what will be modified and turned innnn
     int index = 0; // index = where in the string we'll be
+    bool Tab_status = false; // the tab status, rn there isn't any
 
     for (int i = 0; (i < str.size()); i++){ // Iterates through each character in the string
 
         if (str[i] == '\t') { // if the index we're on is a tab...
+            Tab_status = true; // tab_status is now true cuz we see a tab
             int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
             result.append(spaces, ' '); // Appends spaces_to_add number of spaces
             index += spaces; // Update column position
@@ -230,6 +232,9 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
                 index += 1; // Otherwise, increment column position
             }
         }
+    }
+    if (!Tab_status) {
+        return str; 
     }
     return result;
 }
