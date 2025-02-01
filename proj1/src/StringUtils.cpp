@@ -33,13 +33,17 @@ std::string Capitalize(const std::string &str) noexcept{
         return str; // if empty it returns the string back
     }
 
-    std::string reult = str;  // capital_result will be the string with the first letter capitalized.
+    std::string result = str;  // capital_result will be the string with the first letter capitalized.
 
-    if (std::islower(reult[0])) { // Checks if the first letter is capitalized
-        reult[0] = std::toupper(reult[0]); // if so it makes the first letter capital
+    for (int i = 0; (i < result.size()); i++){ // iterates through each character in the string
+        result[i] = std::tolower(result[i]); // lowers each character
     }
 
-    return reult;
+    // if (std::islower(result[0])) { // Checks if the first letter is capitalized
+        result[0] = std::toupper(result[0]); // Makes the first letter capital
+    // }
+
+    return result;
 }
 
 // Assignment: Returns the upper-case strings as in python
