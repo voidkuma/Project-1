@@ -206,9 +206,32 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
     return str;
 }
 
+// Assignment = Replaces tabs with spaces aligning at the tabstops
+// str = string
+// tabsize = the size of the tab??
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
-    // Replace code here
-    return str;
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty it returns the string back
+    }
+    std::string result = ""; // result = what will be modified and turned innnn
+    int index = 0; // index = where in the string we'll be
+
+    for (int i = 0; (i < str.size()); i++){ // Iterates through each character in the string
+
+        if (str[i] == '\t') { // if the index we're on is a tab...
+            int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
+            result.append(spaces, ' '); // Appends spaces_to_add number of spaces
+            index += spaces; // Update column position
+        } else {
+            result += str[i]; // Append normal characters as they are
+            if (str[i] == '\n') { 
+                index = 0; // Reset column if newline is found
+            } else { 
+                index += 1; // Otherwise, increment column position
+            }
+        }
+    }
+    return result;
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
