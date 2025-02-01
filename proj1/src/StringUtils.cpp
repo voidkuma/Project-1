@@ -233,7 +233,7 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
         }
     }
 
-    if (!Tab_status) {
+    if (Tab_status == false) {
         return str; 
     } else {
      return result;
