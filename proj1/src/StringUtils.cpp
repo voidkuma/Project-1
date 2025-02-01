@@ -241,13 +241,14 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
             int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
             result.append(spaces, ' '); // Appends spaces_to_add number of spaces
             index += spaces; // Update column position
-        }
-        if (str[i] == '\n') { 
-            index = 0; // Reset column if newline is found
-            result += str[i]; // Append normal characters as they are
-        } else { 
-            index += 1; // Otherwise, increment column position
-            result += str[i]; // Append normal characters as they are
+        } else {
+            if (str[i] == '\n') { 
+                index = 0; // Reset column if newline is found
+                result += str[i]; // Append normal characters as they are
+            } else { 
+                index += 1; // Otherwise, increment column position
+                result += str[i]; // Append normal characters as they are
+            }
         }
     }
     return result;
