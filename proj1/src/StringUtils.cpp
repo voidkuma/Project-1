@@ -1,6 +1,8 @@
 #include "StringUtils.h"
 #include <cstring> 
 #include <cctype>
+#include <vector>
+#include <sstream>
 
 namespace StringUtils{
 
@@ -196,8 +198,33 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 // Assignment = Splits the string up into a vector of strings based on splt parameter, if
 // splt parameter is empty string, then split on white space
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
-    // Replace code here
-    return {};
+
+    std::vector<std::string> result; // result = a vectore that will hold our final answer
+    if (str.empty()){
+        return;
+    }
+    if (splt.empty()){
+        std::istringstream stream(str);
+        std::string word;
+        while (stream >> word) {
+            result.push_back(word);
+        }
+    } else {
+        // Otherwise, split based on the splt parameter
+        size_t start = 0;
+        size_t end = str.find(splt);
+        
+        while (end != std::string::npos) {
+            result.push_back(str.substr(start, end - start));
+            start = end + splt.length();
+            end = str.find(splt, start);
+        }
+        
+        // Add the last part of the string
+        result.push_back(str.substr(start));
+    }
+
+    return result;
 }
 
 // Assignment = Joins a vector of strings into a single string
