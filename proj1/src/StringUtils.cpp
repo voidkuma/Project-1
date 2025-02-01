@@ -179,11 +179,18 @@ std::string RJust(const std::string &str, int width, char fill) noexcept{
 // Assignment =  Returns the string str with all instances of old replaced with rep
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
     
-    if (str.empty()) { // Checking if the string is empty
+    if (str.empty() || old.empty()) { // Checking if the string is empty, or if the old is empty
         return str; // if empty it returns the string back
     }
+    std::string result = str; // result = string that will be modified and returned
+    size_t index = 0; // index = position where the old will be searched from
 
-    return str;
+    while ((index = result.find(old, index)) != std::string::npos) { // starting from the beginning of the string, it looks for old
+    result.replace(index, old.length(), rep); // Replaces old with rep
+    index += rep.length(); // moves past it now that we replaced it, and iterates again
+    }
+
+    return result;
 }
 
 // Assignment = Splits the string up into a vector of strings based on splt parameter, if
