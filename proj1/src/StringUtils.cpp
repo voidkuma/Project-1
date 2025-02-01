@@ -171,9 +171,8 @@ std::string RJust(const std::string &str, int width, char fill) noexcept{
         return str; // if empty it returns the string back
     }
     int extra = width - str.size(); // extra = the extra space that's not the actual string
-    int left_extra = extra / 2; // side_extra = half of the extra space, so one side is the left and the other on the right
     std::string result = str; // result = string we'll turn in
-    result.insert(result.begin(), left_extra, fill); // inserting the beginning of the string with side_extra about of fill
+    result.insert(result.begin(), extra, fill); // inserting the beginning of the string with side_extra about of fill
   
 
     return result;
