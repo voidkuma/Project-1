@@ -203,6 +203,9 @@ std::vector< std::string > Split(const std::string &str, const std::string &splt
     if (str.empty()){ // if the string is empty then there's no vector to really work on...
         return {};
     }
+    if (splt.empty()){
+
+    }
     return {};
 
 }
@@ -239,14 +242,14 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     
         if (str[i] == '\t') { // if the index we're on is a tab...
             int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
-            result.append(spaces, ' '); // Appends spaces_to_add number of spaces
+            result.append(spaces, ' '); // apends the spaces we need to add
             index += spaces; // Update column position
         } else {
             if (str[i] == '\n') { 
                 index = 0; // Reset column if newline is found
                 result += str[i]; // Append normal characters as they are
             } else { 
-                index += 1; // Otherwise, increment column position
+                index += 1; 
                 result += str[i]; // Append normal characters as they are
             }
         }
