@@ -226,10 +226,11 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
         } else {
             if (str[i] == '\n') { 
                 index = 0; // Reset column if newline is found
+                result += str[i]; // Append normal characters as they are
             } else { 
                 index += 1; // Otherwise, increment column position
+                result += str[i]; // Append normal characters as they are
             }
-            result += str[i]; // Append normal characters as they are
         }
     }
 
