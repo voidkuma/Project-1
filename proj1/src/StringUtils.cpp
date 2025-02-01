@@ -218,7 +218,6 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     bool Tab_status = false; // the tab status, rn there isn't any
 
     for (int i = 0; (i < str.size()); i++){ // Iterates through each character in the string
-
         if (str[i] == '\t') { // if the index we're on is a tab...
             Tab_status = true; // tab_status is now true cuz we see a tab
             int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
@@ -233,10 +232,12 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
             }
         }
     }
+
     if (!Tab_status) {
         return str; 
-    }
-    return result;
+    } else {
+     return result;
+     }
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
