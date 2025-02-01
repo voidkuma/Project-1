@@ -197,14 +197,6 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 // splt parameter is empty string, then split on white space
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
 
-    std::vector<std::string> result; // result = a vectore that will hold our final answer
-    if (str.empty()){
-        return;
-    }
-    if (splt.empty()){
-        std::istringstream stream(str);
-        std::string word;
-    }
     return {};
 
 }
