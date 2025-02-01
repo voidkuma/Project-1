@@ -214,19 +214,16 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
         return str; // if empty it returns the string back
     }
 
-    std::string result = ""; // result = what will be modified and turned innnn
+    std::string result = str; // result = what will be modified and turned innnn
     int index = 0; // index = where in the string we'll be
-    bool Tab_status = false; // the tab status, rn there isn't any
 
-    for (int i = 0; (i < str.size()); i++){ // Iterates through each character in the string
-        if (str[i] == '\t') { // if the index we're on is a tab...
-            Tab_status = true; // tab_status is now true cuz we see a tab
+    for (int i = 0; (i < result.size()); i++){ // Iterates through each character in the string
+        if (result[i] == '\t') { // if the index we're on is a tab...
             int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
-            result.append(spaces, ' '); // Appends spaces_to_add number of spaces
+            result.replace(i, 1, spaces, ' '); // Replace the tab with spaces
             index += spaces; // Update column position
         } else {
-            result += str[i]; // Append normal characters as they are
-            if (str[i] == '\n') { 
+           if (result[i] == '\n') { 
                 index = 0; // Reset column if newline is found
             } else { 
                 index += 1; // Otherwise, increment column position
@@ -234,11 +231,9 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
         }
     }
 
-    if (Tab_status == false) {
-        return str; 
-    }
     return result;
 }
+
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
     // Replace code here
