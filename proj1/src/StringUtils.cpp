@@ -203,8 +203,19 @@ std::vector< std::string > Split(const std::string &str, const std::string &splt
 
 // Assignment = Joins a vector of strings into a single string
 std::string Join(const std::string &str, const std::vector< std::string > &vect) noexcept{
-    // Replace code here
-    return str;
+
+    if (vect.empty()) { // If the vector of strings is empty, then there's nothin to put as a string
+        return "";
+    }
+    std::string result; // this will hold all the strings in the vector in one string.
+
+    for (size_t i = 0; i < vect.size(); ++i) {
+        result += vect[i];
+        if (i < vect.size() - 1) {
+            result += str;
+        }
+    }
+    return result;
 }
 
 // Assignment = Replaces tabs with spaces aligning at the tabstops
