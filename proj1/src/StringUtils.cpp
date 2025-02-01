@@ -211,28 +211,25 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
 // tabsize = the size of the tab??
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
 
-    if (str == "") { // Checking if the string is empty
-        return str; // if empty it returns the string back
+    if (str.empty()) { // Checking if the string is empty
+        return str; // if empty, return the string back
     }
-    std::string result = ""; // result = what will be modified and turned innnn
-    int index = 0; // index = where in the string we'll be
 
-    for (int i = 0; (i < str.size()); i++){ // Iterates through each character in the string
-        if (str[i] == '\t') { // if the index we're on is a tab...
-            int spaces = tabsize - (index % tabsize); // spaces = spaces we gotta add 
-            result.append(spaces, ' '); // Appends spaces_to_add number of spaces
-            index += spaces; // Update column position
+    std::string result; // result = string that will store modified output
+    int pos = 0; // pos = position in the string
+
+    for (char ch : str) { // Iterating through each character in str
+        if (ch == '\t') { // If a tab is found
+            int spaces_to_add = tabsize - (pos % tabsize); // Number of spaces needed to align to next tab stop
+            result.append(spaces_to_add, ' '); // Appends spaces_to_add number of spaces
+            pos += spaces_to_add; // Update column position
         } else {
-            if (str[i] == '\n') { 
-                index = 0; // Reset column if newline is found
-            } else { 
-                index += 1; // Otherwise, increment column position
-            }
-            result += str[i]; // Append normal characters as they are
+            result += ch; // Append normal characters as they are
+            pos = (ch == '\n') ? 0 : pos + 1; // Reset column if newline is found, otherwise increment
         }
     }
 
-    return result;
+    return result; // Return the expanded string
 
 }
 
