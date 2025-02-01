@@ -1,3 +1,6 @@
+// Rei Hernandez
+// ECS 34 Winter 2025
+//
 #include "StringUtils.h"
 #include <cstring> 
 #include <cctype>
@@ -197,6 +200,9 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 // splt parameter is empty string, then split on white space
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
 
+    if (str.empty()){ // if the string is empty then there's no vector to really work on...
+        return {};
+    }
     return {};
 
 }
@@ -209,13 +215,13 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
     }
     std::string result; // this will hold all the strings in the vector in one string.
 
-    for (size_t i = 0; i < vect.size(); ++i) {
-        result += vect[i];
-        if (i < vect.size() - 1) {
+    for (size_t i = 0; i < vect.size(); ++i) { //Iterates through each string in the vector
+        result += vect[i]; // adds the string into our result single string
+        if (i < vect.size() - 1) { 
             result += str;
         }
     }
-    return result;
+    return result; // returns our single string
 }
 
 // Assignment = Replaces tabs with spaces aligning at the tabstops
