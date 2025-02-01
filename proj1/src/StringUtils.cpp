@@ -211,7 +211,7 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
 // tabsize = the size of the tab??
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
 
-    if (str == "") { // Checking if the string is empty
+    if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
     std::string result = ""; // result = what will be modified and turned innnn
@@ -233,14 +233,46 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
             }
         }
     }
-
     return result;
-
 }
-
+// Assignment = Calculates the Levenshtein distance (edit distance) between the two strings
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
-    // Replace code here
-    return 0;
+
+int m = left.size();
+    int n = right.size();
+
+    // If ignoring case, convert both strings to lowercase
+    std::string leftStr = left, rightStr = right;
+    if (ignorecase) {
+        std::transform(leftStr.begin(), leftStr.end(), leftStr.begin(), ::tolower);
+        std::transform(rightStr.begin(), rightStr.end(), rightStr.begin(), ::tolower);
+    }
+
+    std::vector<std::vector<int>> distance(m + 1, std::vector<int>(n + 1));
+
+
+    for (int i = 0; i <= m; ++i) {
+        distance[i][0] = i;  
+    }
+    for (int j = 0; j <= n; ++j) {
+        distance[0][j] = j; 
+    }
+
+    // Fill the distance table
+    for (int i = 1; i <= m; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            int cost = (leftStr[i - 1] == rightStr[j - 1]) ? 0 : 1;
+
+            distance[i][j] = std::min({
+                distance[i - 1][j] + 1,   // Deletion
+                distance[i][j - 1] + 1,   // Insertion
+                distance[i - 1][j - 1] + cost  // Substitution
+            });
+        }
+    }
+
+    // Return the Levenshtein distance
+    return distance[m][n];
 }
 
 };
