@@ -127,32 +127,34 @@ std::string Strip(const std::string &str) noexcept{
 
     return str.substr(first, last - first);
 }
-
+//Assignment: Returns the center/left/right justified strings
 std::string Center(const std::string &str, int width, char fill) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
+//Assignment: Returns the center/left/right justified strings
 std::string LJust(const std::string &str, int width, char fill) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
+//Assignment: Returns the center/left/right justified strings
 std::string RJust(const std::string &str, int width, char fill) noexcept{
 
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
