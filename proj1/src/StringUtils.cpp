@@ -151,7 +151,7 @@ std::string Center(const std::string &str, int width, char fill) noexcept{
 //Assignment: Returns the left justified strings
 std::string LJust(const std::string &str, int width, char fill) noexcept{
 
-    if (str.empty()|| width <= str.size()) { // Checking if the string is empty
+    if (str.empty()|| width <= str.size()) { // Checking if the string is empty if the width is less/equal of string size
         return str; // if empty it returns the string back
     }
 
@@ -167,39 +167,41 @@ std::string LJust(const std::string &str, int width, char fill) noexcept{
 //Assignment: Returns the right justified strings
 std::string RJust(const std::string &str, int width, char fill) noexcept{
 
-    if (str.empty()|| width <= str.size()) { // Checking if the string is empty
+    if (str.empty()|| width <= str.size()) { // Checking if the string is empty if the width is less/equal of string size
         return str; // if empty it returns the string back
     }
     int extra = width - str.size(); // extra = the extra space that's not the actual string
     std::string result = str; // result = string we'll turn in
     result.insert(result.begin(), extra, fill); // inserting the beginning of the string with side_extra about of fill
   
-
     return result;
 }
-
+// Assignment =  Returns the string str with all instances of old replaced with rep
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
     
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
 
-    return "";
+    return str;
 }
 
+// Assignment = Splits the string up into a vector of strings based on splt parameter, if
+// splt parameter is empty string, then split on white space
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
     // Replace code here
     return {};
 }
 
+// Assignment = Joins a vector of strings into a single string
 std::string Join(const std::string &str, const std::vector< std::string > &vect) noexcept{
     // Replace code here
-    return "";
+    return str;
 }
 
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     // Replace code here
-    return "";
+    return str;
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
