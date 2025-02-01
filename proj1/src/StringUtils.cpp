@@ -9,13 +9,13 @@ namespace StringUtils{
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     // Replace code here
 
-    ssize_t length = str.size(); // this is the length of the string
+    ssize_t length = str.size(); // length of the string
     
     if (start < 0){
-        start += length; // Adjusting if negative for C++
+        start += length; // Adjusting if for C++
     }
     if (end < 0){
-        end += length; // Adjusting if negative for C++ 
+        end += length; // Adjusting if for C++ 
     } 
 
     if (start < 0) start = 0;
@@ -38,10 +38,7 @@ std::string Capitalize(const std::string &str) noexcept{
     for (int i = 0; (i < result.size()); i++){ // iterates through each character in the string
         result[i] = std::tolower(result[i]); // lowers each character
     }
-
-    // if (std::islower(result[0])) { // Checks if the first letter is capitalized
-        result[0] = std::toupper(result[0]); // Makes the first letter capital
-    // }
+    result[0] = std::toupper(result[0]); // Makes the first letter capital
 
     return result;
 }
@@ -132,9 +129,12 @@ std::string Strip(const std::string &str) noexcept{
     return str.substr(first, last - first);
 }
 //Assignment: Returns the center/left/right justified strings
+// width = width of the whole string essentially the length of how it should be
+// fill = the characters to fill the space with
+// str = well, its just the string lol
 std::string Center(const std::string &str, int width, char fill) noexcept{
 
-    if (str.empty()) { // Checking if the string is empty
+    if (str.empty()|| width <= str.size()) { // Checking if the string is empty or if the width is less/equal of string size
         return str; // if empty it returns the string back
     }
 
