@@ -138,11 +138,12 @@ std::string Center(const std::string &str, int width, char fill) noexcept{
         return str; // if empty it returns the string back
     }
     int extra = width - str.size(); // extra = the extra space that's not the actual string
-    int side_extra = extra / 2; // side_extra = half of the extra space, so one side is the left and the other on the right
+    int left_extra = extra / 2; // side_extra = half of the extra space, so one side is the left and the other on the right
+    int right_extra = extra - left_extra; // Right side gets the remaining 
 
     std::string result = str; // result = string we'll turn in
-    result.insert(result.begin(), side_extra, fill); // inserting the beginning of the string with side_extra about of fill
-    result.append(side_extra, fill); // appending fill side_extra amount of times on the end of the string(on the right)
+    result.insert(result.begin(), left_extra, fill); // inserting the beginning of the string with side_extra about of fill
+    result.append(right_extra, fill); // appending fill side_extra amount of times on the end of the string(on the right)
 
     return result;
 }
