@@ -151,7 +151,7 @@ std::string Center(const std::string &str, int width, char fill) noexcept{
 //Assignment: Returns the left justified strings
 std::string LJust(const std::string &str, int width, char fill) noexcept{
 
-    if (str.empty()) { // Checking if the string is empty
+    if (str.empty()|| width <= str.size()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
 
@@ -167,7 +167,7 @@ std::string LJust(const std::string &str, int width, char fill) noexcept{
 //Assignment: Returns the right justified strings
 std::string RJust(const std::string &str, int width, char fill) noexcept{
 
-    if (str.empty()) { // Checking if the string is empty
+    if (str.empty()|| width <= str.size()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
     int extra = width - str.size(); // extra = the extra space that's not the actual string
