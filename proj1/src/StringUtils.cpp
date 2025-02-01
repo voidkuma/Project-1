@@ -213,6 +213,7 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
     if (str.empty()) { // Checking if the string is empty
         return str; // if empty it returns the string back
     }
+
     std::string result = ""; // result = what will be modified and turned innnn
     int index = 0; // index = where in the string we'll be
     bool Tab_status = false; // the tab status, rn there isn't any
@@ -235,9 +236,8 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
 
     if (Tab_status == false) {
         return str; 
-    } else {
-     return result;
-     }
+    }
+    return result;
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
