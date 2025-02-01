@@ -206,25 +206,9 @@ std::vector< std::string > Split(const std::string &str, const std::string &splt
     if (splt.empty()){
         std::istringstream stream(str);
         std::string word;
-        while (stream >> word) {
-            result.push_back(word);
-        }
-    } else {
-        // Otherwise, split based on the splt parameter
-        size_t start = 0;
-        size_t end = str.find(splt);
-        
-        while (end != std::string::npos) {
-            result.push_back(str.substr(start, end - start));
-            start = end + splt.length();
-            end = str.find(splt, start);
-        }
-        
-        // Add the last part of the string
-        result.push_back(str.substr(start));
     }
+    return {};
 
-    return result;
 }
 
 // Assignment = Joins a vector of strings into a single string
